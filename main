@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Conversor de Moedas</title>
+</head>
+<body>
+	<h2>Conversor de Moedas</h2>
+	<form method="post">
+		<label for="reais">Digite o valor em Reais:</label>
+		<input type="number" step="0.01" name="reais" id="reais">
+		<button type="submit">Converter</button>
+	</form>
+	
+	<%
+	if (request.getMethod().equals("POST")) {
+		double reais = Double.parseDouble(request.getParameter("reais"));
+		double cotacaoDolar = 5.57; // atualizar com a cotação do dólar
+		double dolares = reais / cotacaoDolar;
+	%>
+	<h2>Resultado da Conversão:</h2>
+	<p><%= String.format("%.2f", dolares) %> dólares</p>
+	<%
+	}
+	%>
+</body>
+</html> 
+
+
